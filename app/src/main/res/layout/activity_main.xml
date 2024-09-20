@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bckgrnd"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_titre"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/app_name"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/iv_accueil"
+        android:layout_width="match_parent"
+        android:layout_height="323dp"
+        app:srcCompat="@drawable/image_accueil" />
+
+    <TextView
+        android:id="@+id/tv_nomApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ui1_reservation_nom"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/sp_restaurants"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:entries="@array/ui1_restosArray"/>
+
+    <TextView
+        android:id="@+id/tv_placesDisp"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:text="@string/ui1_numPlaces"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_reserver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ui1_boutonReserv" />
+
+    <Button
+        android:id="@+id/btn_afficherReserv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ui1_boutonAfficher" />
+</LinearLayout>
