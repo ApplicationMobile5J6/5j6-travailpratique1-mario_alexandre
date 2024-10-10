@@ -1,9 +1,11 @@
+package com.example.tp1;
+
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
 import java.sql.Time;
 
-public class reservation {
+public class Reservation {
 
     int noReservation;
     public int getNoReservation() {
@@ -68,7 +70,7 @@ public class reservation {
         this.telPersonne = telPersonne;
     }
 
-    public reservation(int pNoReserv, DatePicker pDateReserv, int pNbPlaces, TimePicker pBlocDebut,String pNomPers, String pTelPers){
+    public Reservation(int pNoReserv, DatePicker pDateReserv, int pNbPlaces, TimePicker pBlocDebut, String pNomPers, String pTelPers){
         noReservation = pNoReserv;
         dateReservation = pDateReserv;
         nbPlaces = pNbPlaces;

@@ -14,12 +14,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
     Button reserverTable, afficherReserve;
     TextView validateur_places;
     Spinner spinnerRestaurants;
 
+    List<Restaurant> restaurantList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -31,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        restaurantList = new ArrayList<>();
+        restaurantList.add(new Restaurant(1, "Chez Alex", 30, 30));
+        restaurantList.add(new Restaurant(2, "Chez Mario", 16, 16));
         spinnerRestaurants = findViewById(R.id.sp_restaurants);
         reserverTable = findViewById(R.id.btn_reserver);
         afficherReserve = findViewById(R.id.btn_afficherReserv);

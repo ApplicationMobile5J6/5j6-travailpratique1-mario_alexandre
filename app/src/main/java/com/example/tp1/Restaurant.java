@@ -1,29 +1,38 @@
+package com.example.tp1;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-public class restaurant implements Parcelable {
+public class Restaurant implements Parcelable {
 
     int noRestaurant, nbPlacesMax, nbPlacesRestantes;
     String nomRestaurant;
 
-    protected restaurant(Parcel in) {
+    public Restaurant(int noRestaurant, String nomRestaurant, int nbPlacesMax, int nbPlacesRestantes) {
+        this.noRestaurant = noRestaurant;
+        this.nomRestaurant = nomRestaurant;
+        this.nbPlacesMax = nbPlacesMax;
+        this.nbPlacesRestantes = nbPlacesRestantes;
+    }
+    protected Restaurant(Parcel in) {
         noRestaurant = in.readInt();
         nbPlacesMax = in.readInt();
         nbPlacesRestantes = in.readInt();
         nomRestaurant = in.readString();
     }
 
-    public static final Creator<restaurant> CREATOR = new Creator<restaurant>() {
+
+    public static final Creator<Restaurant> CREATOR = new Creator<Restaurant>() {
         @Override
-        public restaurant createFromParcel(Parcel in) {
-            return new restaurant(in);
+        public Restaurant createFromParcel(Parcel in) {
+            return new Restaurant(in);
         }
 
         @Override
-        public restaurant[] newArray(int size) {
-            return new restaurant[size];
+        public Restaurant[] newArray(int size) {
+            return new Restaurant[size];
         }
     };
 
