@@ -8,6 +8,7 @@
 
     <string name="ui2_afficherResto">Réservations de places au restaurant</string>
     <string name="ui2_placeReserv">place réservée</string>
+    <string name="ui2_placeRest">Places restantes : </string>
     <string name="ui2_placesReservs">places réservées</string>
     <string name="ui2_boutonReserve">Réserver la table</string>
     <string name="ui2_pasPlaces">"Il n'y a pas assez de places pour la réservation"</string>

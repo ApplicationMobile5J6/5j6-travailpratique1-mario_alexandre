@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+import android.widget.ArrayAdapter;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -43,13 +43,23 @@ public class MainActivity extends AppCompatActivity {
         afficherReserve = findViewById(R.id.btn_afficherReserv);
         validateur_places = findViewById(R.id.tv_placesDisp);
 
+        List<String> restaurantNames = new ArrayList<>();
+        for (Restaurant resto : restaurantList) {
+            restaurantNames.add(resto.nomRestaurant);
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, restaurantNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRestaurants.setAdapter(adapter);
+
 
         reserverTable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent pageReserve = new Intent(MainActivity.this, ReservationPlaces.class);
-                //retient les infos du resto choisi et l'amene vers l'autre page
-                //pageReserve.putExtra("leResto",unObjetResto);
+                int selectedPosition = spinnerRestaurants.getSelectedItemPosition();
+                Restaurant unObjetResto = restaurantList.get(selectedPosition);
+                pageReserve.putExtra("leResto",unObjetResto);
                 startActivity(pageReserve);
             }
         });

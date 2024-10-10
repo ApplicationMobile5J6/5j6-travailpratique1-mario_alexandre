@@ -14,6 +14,7 @@
 
     <string name="ui2_afficherResto">Seats Reservation at</string>
     <string name="ui2_placeReserv">seat reserved</string>
+    <string name="ui2_placeRest">Available Places: </string>
     <string name="ui2_placesReservs">seats reserved</string>
     <string name="ui2_boutonReserve">Reserve The Table</string>
     <string name="ui2_pasPlaces">"Not Enough Seats for this Booking"</string>
