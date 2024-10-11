@@ -19,5 +19,14 @@
     <string name="ui2_boutonReserve">Reserve The Table</string>
     <string name="ui2_pasPlaces">"Not Enough Seats for this Booking"</string>
     <string name="ui2_reserveReussi">Booking was successful!</string>
+    <string name="hint_reservation_time">Reservation time: </string>
+
+    <string-array name="time_options">
+        <item>16:00</item>
+        <item>17:30</item>
+        <item>19:00</item>
+        <item>20:30</item>
+        <item>22:00</item>
+    </string-array>
 
 </resources>

@@ -13,4 +13,5 @@
     <string name="ui2_boutonReserve">Réserver la table</string>
     <string name="ui2_pasPlaces">"Il n'y a pas assez de places pour la réservation"</string>
     <string name="ui2_reserveReussi">La réservation a été sauvegardée!</string>
+    <string name="hint_reservation_time">Heur de réservation: </string>
 </resources>
