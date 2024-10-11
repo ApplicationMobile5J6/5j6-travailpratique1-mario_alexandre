@@ -2,24 +2,25 @@
     <string name="app_name">TP1</string>
 
     <string name="ui1_reservation_nom">ReservoTable</string>
-
-    <string-array name="ui1_restosArray">
-        <item>Baton Rouge</item>
-        <item>Pizza Hut</item>
-    </string-array>
-
-    <string name="ui1_numPlaces">seats available</string>
+    <string name="ui1_numPlaces">%1$d Seats Available</string>
     <string name="ui1_boutonReserv">Reserve Table</string>
     <string name="ui1_boutonAfficher">Show All Reservations</string>
 
-    <string name="ui2_afficherResto">Seats Reservation at</string>
-    <string name="ui2_placeReserv">seat reserved</string>
-    <string name="ui2_placeRest">Available Places: </string>
-    <string name="ui2_placesReservs">seats reserved</string>
+    <string name="ui2_afficherResto">Seats Reservation at %1$s</string>
+    <string name="ui2_placesReservs">%1$d Seat(s) Reserved</string>
     <string name="ui2_boutonReserve">Reserve The Table</string>
     <string name="ui2_pasPlaces">"Not Enough Seats for this Booking"</string>
     <string name="ui2_reserveReussi">Booking was successful!</string>
+    <string name="ui2_nomPersonne">Name</string>
+    <string name="ui2_numPersonne">Phone Number (1234567890)</string>
+    <string name="ui2_heure">Selected Time: %1$s</string>
+    <string name="ui2_finReserve">End Time: %1$s</string>
+    <string name="ui2_choixDate">Select Date</string>
+    <string name="ui2_placesChoisis">Places Selected: %1$d</string>
+    <string name="ui2_erreurTemps">Error Calculating End Time</string>
+
     <string name="hint_reservation_time">Reservation time: </string>
+    <string name="ui2_erreurInfos">Please Fill All Fields</string>
 
     <string-array name="time_options">
         <item>16:00</item>

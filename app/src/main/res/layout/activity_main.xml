@@ -34,8 +34,7 @@
     <Spinner
         android:id="@+id/sp_restaurants"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:entries="@array/ui1_restosArray"/>
+        android:layout_height="48dp" />
 
     <TextView
         android:id="@+id/tv_placesDisp"
@@ -55,4 +54,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ui1_boutonAfficher" />
+
 </LinearLayout>

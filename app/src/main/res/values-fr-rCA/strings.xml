@@ -2,16 +2,25 @@
 <resources>
     <string name="app_name">TP1</string>
     <string name="ui1_reservation_nom">ReservoTable</string>
-    <string name="ui1_numPlaces">places restantes</string>
+    <string name="ui1_numPlaces">%1$d places restantes</string>
     <string name="ui1_boutonReserv">Réserver une table</string>
     <string name="ui1_boutonAfficher">Afficher les réservations</string>
 
-    <string name="ui2_afficherResto">Réservations de places au restaurant</string>
-    <string name="ui2_placeReserv">place réservée</string>
-    <string name="ui2_placeRest">Places restantes : </string>
-    <string name="ui2_placesReservs">places réservées</string>
+    <string name="ui2_afficherResto">Réservations de places au restaurant %1$s</string>
+    <string name="ui2_placesReservs">%1$d places réservées</string>
     <string name="ui2_boutonReserve">Réserver la table</string>
     <string name="ui2_pasPlaces">"Il n'y a pas assez de places pour la réservation"</string>
     <string name="ui2_reserveReussi">La réservation a été sauvegardée!</string>
-    <string name="hint_reservation_time">Heur de réservation: </string>
+    <string name="ui2_nomPersonne">Nom</string>
+    <string name="ui2_numPersonne">Numero telephone (1234567890)</string>
+    <string name="ui2_heure">Heure choisie: %1$s</string>
+    <string name="ui2_finReserve">Fin reservation: %1$s</string>
+    <string name="ui2_choixDate">Choisir date</string>
+    <string name="ui2_placesChoisis">Place(s) reservee(s): %1$d</string>
+    <string name="ui2_erreurTemps">Erreur avec le temps de fin</string>
+
+    <string name="ui2_erreurInfos">Veuillez remplir tous les champs correctement</string>
+    <string name="hint_reservation_time">Heure de réservation: </string>
+
+
 </resources>

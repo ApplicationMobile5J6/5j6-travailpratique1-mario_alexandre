@@ -13,25 +13,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ui2_afficherResto"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintVertical_bias="0.066" />
 
     <TextView
         android:id="@+id/tv_nbPlacesRestantes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Available Places: "
-        android:textSize="18sp"
-        android:textColor="@color/black"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_nomResto"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/ui1_numPlaces"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"  />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_nomResto" />
 
     <EditText
         android:id="@+id/et_selectedDate"
@@ -40,7 +41,7 @@
         android:layout_marginTop="20dp"
         android:background="@android:drawable/editbox_background"
         android:focusable="false"
-        android:hint="Select Date"
+        android:hint="@string/ui2_choixDate"
         android:minHeight="48dp"
         android:padding="10dp"
         android:textColor="@android:color/black"
@@ -54,10 +55,10 @@
         android:id="@+id/btn_openDatePicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="Select Date"
+        android:layout_marginTop="20dp"
+        android:text="@string/ui2_choixDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_selectedDate" />
 
@@ -77,7 +78,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Selected Places: 0"
+        android:text="@string/ui2_placesChoisis"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.139"
@@ -88,22 +90,21 @@
         android:id="@+id/btn_confirmReservation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="296dp"
-        android:text="Confirm Reservation"
+        android:text="@string/ui2_boutonReserve"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_selectedPlaces" />
+        app:layout_constraintTop_toBottomOf="@+id/et_phone" />
 
     <Spinner
         android:id="@+id/spinner_reservation_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
         android:entries="@array/time_options"
         android:minHeight="48dp"
         android:prompt="@string/hint_reservation_time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintEnd_toStartOf="@+id/tv_endTime"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/seekBar_nbPlaces" />
 
@@ -111,11 +112,12 @@
         android:id="@+id/tv_endTime"
         android:layout_width="102dp"
         android:layout_height="45dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="12dp"
         android:focusable="false"
-        android:text="End Time: "
+        android:text="@string/ui2_finReserve"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.734"
+        app:layout_constraintHorizontal_bias="0.757"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_nbPlaces" />
 
@@ -124,7 +126,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:hint="Nom de la personne"
+        android:hint="@string/ui2_nomPersonne"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -136,7 +138,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Numéro de téléphone"
+        android:hint="@string/ui2_numPersonne"
         android:inputType="phone"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,9 +1,8 @@
 package com.example.tp1;
 
 import android.widget.DatePicker;
-import android.widget.TimePicker;
 
-import java.sql.Time;
+import androidx.annotation.NonNull;
 
 public class Reservation {
 
@@ -77,5 +76,11 @@ public class Reservation {
         blocReservationFin = pBlocFin;
         nomPersonne = pNomPers;
         telPersonne = pTelPers;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

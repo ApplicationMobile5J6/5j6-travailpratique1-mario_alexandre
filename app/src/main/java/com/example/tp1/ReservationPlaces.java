@@ -23,22 +23,25 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class ReservationPlaces extends AppCompatActivity {
+public class ReservationPlaces extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
     Button btn_openDatePicker, btn_confirmReservation;
     EditText et_selectedDate, et_nom, et_phone;
-    TextView et_nomResto, tv_selectedPlaces, tv_endTime;
+    TextView et_nomResto, tv_selectedPlaces, tv_endTime, tv_nbPlaces, tv_dateReserve;
     SeekBar seekBar_nbPlaces;
     Spinner spinner_reservationTime;
     Restaurant selectedRestaurant;
+    Reservation newReservation;
     ArrayList<Reservation> reservationsList = new ArrayList<>();
     int selectedSeats = 0;
     int noReservation = 1;
-    String resDate,resStart, resEnd;
+    String modifTexte;
+    String resDate, resStart, resEnd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +61,36 @@ public class ReservationPlaces extends AppCompatActivity {
         tv_selectedPlaces = findViewById(R.id.tv_selectedPlaces);
         spinner_reservationTime = findViewById(R.id.spinner_reservation_time);
         tv_endTime = findViewById(R.id.tv_endTime);
+        tv_nbPlaces = findViewById(R.id.tv_nbPlacesRestantes);
+        tv_dateReserve = findViewById(R.id.et_selectedDate);
         et_nom = findViewById(R.id.et_nom);
         et_phone = findViewById(R.id.et_phone);
-        btn_openDatePicker.setOnClickListener(v -> showDatePickerDialog());
+
+        btn_openDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AfficheDate dateAfficher = new AfficheDate();
+                dateAfficher.show(getSupportFragmentManager(), "Choix Date");
+            }
+
+        });
+
+
+        // Debut de la page
+        modifTexte = getResources().getString(R.string.ui2_placesReservs, selectedSeats);
+        tv_selectedPlaces.setText(modifTexte);
+
+        modifTexte = getResources().getString(R.string.ui2_afficherResto, selectedRestaurant.nomRestaurant);
+        et_nomResto.setText(modifTexte);
+
+        modifTexte = getResources().getString(R.string.ui1_numPlaces, selectedRestaurant.nbPlacesRestantes);
+        tv_nbPlaces.setText(modifTexte);
+
         seekBar_nbPlaces.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tv_selectedPlaces.setText("Selected Places: " + progress);
+                modifTexte = getResources().getString(R.string.ui2_placesReservs, progress);
+                tv_selectedPlaces.setText(modifTexte);
                 selectedSeats = progress;
             }
 
@@ -92,9 +118,9 @@ public class ReservationPlaces extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedTime = parent.getItemAtPosition(position).toString();
-                Toast.makeText(ReservationPlaces.this, "Selected Time: " + selectedTime, Toast.LENGTH_SHORT).show();
+                modifTexte = getResources().getString(R.string.ui2_heure, selectedTime);
+                Toast.makeText(ReservationPlaces.this, modifTexte, Toast.LENGTH_SHORT).show();
                 updateEndTime(selectedTime);
-
             }
 
             @Override
@@ -119,72 +145,60 @@ public class ReservationPlaces extends AppCompatActivity {
             // Affiche le temps de fin
             String endTime = sdf.format(calendar.getTime());
             resEnd = endTime;
-            tv_endTime.setText("End Time: " + endTime);
+            modifTexte = getResources().getString(R.string.ui2_finReserve, endTime);
+            tv_endTime.setText(modifTexte);
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error calculating end time", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.ui2_erreurTemps, Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void showDatePickerDialog() {
-        final Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                ReservationPlaces.this,
-                (view, selectedYear, selectedMonth, selectedDay) -> {
-                    String date = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
-                    et_selectedDate.setText(date);
-                    resDate = date;
-                }, year, month, day);
-
-        datePickerDialog.show();
     }
 
     private void makeReservation() {
         String name = et_nom.getText().toString();
         String phone = et_phone.getText().toString();
 
+
         // Valide que les champs sont remplis
         if (name.isEmpty() || phone.isEmpty() || !isValidPhoneNumber(phone)) {
-            Toast.makeText(this, "Veuillez remplir tous les champs correctement", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.ui2_erreurInfos, Toast.LENGTH_SHORT).show();
             return;
         }
-
         // Check si il y a assez d'espaces
-        if (selectedSeats > selectedRestaurant.nbPlacesRestantes) {
-            Toast.makeText(this, "Il n'y a pas assez de places pour cette réservation", Toast.LENGTH_SHORT).show();
+        else if (selectedSeats > selectedRestaurant.nbPlacesRestantes) {
+            Toast.makeText(this, R.string.ui2_pasPlaces, Toast.LENGTH_SHORT).show();
             return;
         }
+        else {
+            // Si valide, cree une Reservation
+            newReservation = new Reservation(noReservation, resDate, selectedSeats, resStart, resEnd, name, phone);
+            noReservation++;
+            // L'ajoute a la liste de reservations
+            reservationsList.add(newReservation);
 
-        // Si valide, cree une Reservation
-        Reservation newReservation = new Reservation(noReservation, resDate, selectedSeats, resStart, resEnd, name, phone);
+            // Met a jour le nombre de places qui restent
+            selectedRestaurant.nbPlacesRestantes -= selectedSeats;
+            modifTexte = getResources().getString(R.string.ui1_numPlaces, selectedRestaurant.nbPlacesRestantes);
+            tv_nbPlaces.setText(modifTexte);
 
-        // L'ajoute a la liste de reservations
-        reservationsList.add(newReservation);
+            // Logcat de la RESERVATION
+            Log.d("Reservation", "Réservation Numéro: " + newReservation.getNoReservation());
+            Log.d("Reservation", "Nombre de places: " + newReservation.getNbPlaces());
+            Log.d("Reservation", "Date: " + newReservation.dateReservation);
+            Log.d("Reservation", "Heure debut: " + newReservation.blocReservationDebut);
 
-        // Met a jour le nombre de places qui restent
-        selectedRestaurant.nbPlacesRestantes -= selectedSeats;
+            // Message de confirmation
+            Toast.makeText(this, R.string.ui2_reserveReussi, Toast.LENGTH_SHORT).show();
 
-        // Logcat
-        Log.d("Reservation", "Réservation Numéro: " + newReservation.getNoReservation());
-        Log.d("Reservation", "Nombre de places: " + newReservation.getNbPlaces());
-        Log.d("Reservation", "Restaurant: " + selectedRestaurant.nomRestaurant);
+            // Vides les champs
+            clearInputFields();
 
-        // Message de confirmation
-        Toast.makeText(this, "Réservation sauvegardée", Toast.LENGTH_SHORT).show();
-
-        // Vides les champs
-        clearInputFields();
-
-        hideKeyboard();
+            hideKeyboard();
+        }
     }
 
     // Valide le numero de tel
     private boolean isValidPhoneNumber(String phoneNumber) {
-        return phoneNumber.matches("\\d{3}-\\d{3}-\\d{4}");
+        return phoneNumber.matches("^\\d{3}\\d{3}\\d{4}$");
     }
 
     // Vide les champs
@@ -192,7 +206,9 @@ public class ReservationPlaces extends AppCompatActivity {
         et_nom.setText("");
         et_phone.setText("");
         seekBar_nbPlaces.setProgress(0); // Reset seek bar
-        tv_selectedPlaces.setText("Places: 0");
+        modifTexte = getResources().getString(R.string.ui2_placesReservs, 0);
+        tv_selectedPlaces.setText(modifTexte);
+        tv_dateReserve.setText("");
     }
 
     // Hide the keyboard after reservation
@@ -202,5 +218,17 @@ public class ReservationPlaces extends AppCompatActivity {
         if (view != null) {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        String dateChoisie = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
+        newReservation.setDateReservation(dateChoisie);
+        tv_dateReserve.setText(dateChoisie);
     }
 }
