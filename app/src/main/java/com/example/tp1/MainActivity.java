@@ -2,6 +2,7 @@ package com.example.tp1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     TextView validateur_places;
     Spinner spinnerRestaurants;
     String modifTexteNbPlaces;
-
+    Intent affichageListe;
     ArrayList<Restaurant> restaurantList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        affichageListe = getIntent();
+        Parcelable[] reservationsListe = affichageListe.getParcelableArrayExtra("listeReservations");
         restaurantList = new ArrayList<>();
         restaurantList.add(new Restaurant(1, "Chez Alex", 30, 30));
         restaurantList.add(new Restaurant(2, "Chez Mario", 16, 16));
@@ -71,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent pageAfficher = new Intent(MainActivity.this, AffichageReserve.class);
+                pageAfficher.putExtra("listeReservations", reservationsListe);
                 startActivity(pageAfficher);
+                finish();
             }
         });
 

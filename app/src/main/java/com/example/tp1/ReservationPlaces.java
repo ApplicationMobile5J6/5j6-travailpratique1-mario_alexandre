@@ -192,6 +192,10 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
             clearInputFields();
 
             hideKeyboard();
+
+            Intent pageMain= new Intent(ReservationPlaces.this, MainActivity.class);
+            pageMain.putExtra("listeReservations",reservationsList);
+            startActivity(pageMain);
         }
     }
 
@@ -229,4 +233,6 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
         String dateChoisie = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
         tv_dateReserve.setText(dateChoisie);
     }
+
+
 }

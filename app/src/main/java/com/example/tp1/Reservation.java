@@ -1,10 +1,12 @@
 package com.example.tp1;
 
+import android.os.Parcelable;
+import android.os.Parcel;
 import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
 
-public class Reservation {
+public class Reservation implements Parcelable {
 
     int noReservation;
     public int getNoReservation() {
@@ -78,9 +80,56 @@ public class Reservation {
         telPersonne = pTelPers;
     }
 
+    protected Reservation(Parcel in) {
+        noReservation = in.readInt();
+        nbPlaces = in.readInt();
+        dateReservation = in.readString();
+        blocReservationDebut = in.readString();
+        blocReservationFin = in.readString();
+        nomPersonne = in.readString();
+        telPersonne = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(noReservation);
+        dest.writeInt(nbPlaces);
+        dest.writeString(dateReservation);
+        dest.writeString(blocReservationDebut);
+        dest.writeString(blocReservationFin);
+        dest.writeString(nomPersonne);
+        dest.writeString(telPersonne);
+    }
+
+    public static final Creator<Reservation> CREATOR = new Creator<Reservation>() {
+        @Override
+        public Reservation createFromParcel(Parcel in) {
+            return new Reservation(in);
+        }
+
+        @Override
+        public Reservation[] newArray(int size) {
+            return new Reservation[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+
     @NonNull
     @Override
     public String toString() {
-        return super.toString();
+        return "Reservation{" +
+                "noReservation=" + noReservation +
+                ", nbPlaces=" + nbPlaces +
+                ", dateReservation='" + dateReservation + '\'' +
+                ", blocReservationDebut='" + blocReservationDebut + '\'' +
+                ", blocReservationFin='" + blocReservationFin + '\'' +
+                ", nomPersonne='" + nomPersonne + '\'' +
+                ", telPersonne='" + telPersonne + '\'' +
+                '}';
     }
 }
