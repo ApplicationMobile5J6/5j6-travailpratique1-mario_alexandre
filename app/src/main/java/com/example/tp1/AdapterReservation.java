@@ -29,8 +29,8 @@ public class AdapterReservation extends ArrayAdapter<Reservation> {
         TextView tvNbPlaces = convertView.findViewById(R.id.tv_nb_places);
         TextView tvHeures = convertView.findViewById(R.id.tv_heures);
 
-        // Populate the data into the template view using the data object
-        imageView.setImageResource(R.drawable.your_table_image); // Replace with your image resource
+
+        imageView.setImageResource(R.drawable.image_reservation.jpg);
         tvNomPersonne.setText(reservation.getNomPersonne());
         tvNbPlaces.setText("Places: " + reservation.getNbPlaces());
         tvHeures.setText("De: " + reservation.getBlocReservationDebut() + " à " + reservation.getBlocReservationFin());
