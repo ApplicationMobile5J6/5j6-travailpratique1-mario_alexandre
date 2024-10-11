@@ -41,7 +41,7 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
     int selectedSeats = 0;
     int noReservation = 1;
     String modifTexte;
-    String resDate, resStart, resEnd;
+    String resStart, resEnd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -157,7 +157,6 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
         String name = et_nom.getText().toString();
         String phone = et_phone.getText().toString();
 
-
         // Valide que les champs sont remplis
         if (name.isEmpty() || phone.isEmpty() || !isValidPhoneNumber(phone)) {
             Toast.makeText(this, R.string.ui2_erreurInfos, Toast.LENGTH_SHORT).show();
@@ -170,7 +169,7 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
         }
         else {
             // Si valide, cree une Reservation
-            newReservation = new Reservation(noReservation, resDate, selectedSeats, resStart, resEnd, name, phone);
+            newReservation = new Reservation(noReservation, tv_dateReserve.getText().toString(), selectedSeats, resStart, resEnd, name, phone);
             noReservation++;
             // L'ajoute a la liste de reservations
             reservationsList.add(newReservation);
@@ -228,7 +227,6 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
         String dateChoisie = DateFormat.getDateInstance(DateFormat.SHORT).format(calendar.getTime());
-        newReservation.setDateReservation(dateChoisie);
         tv_dateReserve.setText(dateChoisie);
     }
 }
