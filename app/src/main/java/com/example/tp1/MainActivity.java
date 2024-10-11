@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         affichageListe = getIntent();
-        Parcelable[] reservationsListe = affichageListe.getParcelableArrayExtra("listeReservations");
+
         restaurantList = new ArrayList<>();
         restaurantList.add(new Restaurant(1, "Chez Alex", 30, 30));
         restaurantList.add(new Restaurant(2, "Chez Mario", 16, 16));
@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent pageReserve = new Intent(MainActivity.this, ReservationPlaces.class);
                 int selectedPosition = spinnerRestaurants.getSelectedItemPosition();
                 Restaurant unObjetResto = restaurantList.get(selectedPosition);
+
                 pageReserve.putExtra("leResto",unObjetResto);
                 startActivity(pageReserve);
             }
@@ -73,7 +74,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent pageAfficher = new Intent(MainActivity.this, AffichageReserve.class);
-                pageAfficher.putExtra("listeReservations", reservationsListe);
+                int selectedPosition = spinnerRestaurants.getSelectedItemPosition();
+                Restaurant unObjetResto = restaurantList.get(selectedPosition);
+               if  (unObjetResto.noRestaurant ==1) {
+                   Parcelable[] reservationsListe = affichageListe.getParcelableArrayExtra("listeReservations1");
+                   pageAfficher.putExtra("listeReservations", reservationsListe);
+               } else {
+                   Parcelable[] reservationsListe = affichageListe.getParcelableArrayExtra("listeReservations2");
+                   pageAfficher.putExtra("listeReservations", reservationsListe);
+               }
+                pageAfficher.putExtra("leResto",unObjetResto);
                 startActivity(pageAfficher);
                 finish();
             }

@@ -31,7 +31,7 @@ import java.util.Locale;
 
 public class ReservationPlaces extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
     Button btn_openDatePicker, btn_confirmReservation;
-    EditText et_selectedDate, et_nom, et_phone;
+    EditText et_nom, et_phone;
     TextView et_nomResto, tv_selectedPlaces, tv_endTime, tv_nbPlaces, tv_dateReserve;
     SeekBar seekBar_nbPlaces;
     Spinner spinner_reservationTime;
@@ -194,8 +194,13 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
             hideKeyboard();
 
             Intent pageMain= new Intent(ReservationPlaces.this, MainActivity.class);
-            pageMain.putExtra("listeReservations",reservationsList);
-            startActivity(pageMain);
+            if (selectedRestaurant.noRestaurant == 1) {
+                pageMain.putExtra("listeReservations1", reservationsList);
+                startActivity(pageMain);
+            } else{
+                pageMain.putExtra("listeReservations2", reservationsList);
+                startActivity(pageMain);
+            }
         }
     }
 
