@@ -25,30 +25,29 @@ public class Reservation {
         this.nbPlaces = nbPlaces;
     }
 
-    DatePicker dateReservation;
-    public DatePicker getDateReservation() {
+    String dateReservation;
+    public String getDateReservation() {
         return dateReservation;
     }
 
-    public void setDateReservation(DatePicker dateReservation) {
+    public void setDateReservation(String dateReservation) {
         this.dateReservation = dateReservation;
     }
 
-    TimePicker blocReservationDebut;
-    public TimePicker getBlocReservationDebut() {
+    String blocReservationDebut;
+    public String getBlocReservationDebut() {
         return blocReservationDebut;
     }
 
-    public void setBlocReservationDebut(TimePicker blocReservationDebut) {
-        this.blocReservationDebut = blocReservationDebut;
-    }
-
-    Time blocReservationFin;
-    public Time getBlocReservationFin() {
+    String blocReservationFin;
+    public String getBlocReservationFin() {
         return blocReservationFin;
     }
 
-    public void setBlocReservationFin(Time blocReservationFin) {
+    public void setBlocReservationDebut(String blocReservationDebut) {
+        this.blocReservationDebut = blocReservationDebut;
+    }
+    public void setBlocReservationFin(String blocReservationFin) {
         this.blocReservationFin = blocReservationFin;
     }
 
@@ -70,13 +69,12 @@ public class Reservation {
         this.telPersonne = telPersonne;
     }
 
-    public Reservation(int pNoReserv, DatePicker pDateReserv, int pNbPlaces, TimePicker pBlocDebut, String pNomPers, String pTelPers){
+    public Reservation(int pNoReserv, String pDateReserv, int pNbPlaces, String pBlocDebut, String pBlocFin, String pNomPers, String pTelPers){
         noReservation = pNoReserv;
         dateReservation = pDateReserv;
         nbPlaces = pNbPlaces;
         blocReservationDebut = pBlocDebut;
-        // voir comment ajouter 1:29
-        //blocReservationFin = pBlocDebut.setHour(5);
+        blocReservationFin = pBlocFin;
         nomPersonne = pNomPers;
         telPersonne = pTelPers;
     }
