@@ -19,6 +19,10 @@
     <string name="ui2_placesChoisis">Place(s) reservee(s): %1$d</string>
     <string name="ui2_erreurTemps">Erreur avec le temps de fin</string>
 
+
+    <string name="ui3_afficheResto">Affichage des reservations %1$s</string>
+    <string name="ui3_choixDateResto">Choisir date</string>
+
     <string name="ui2_erreurInfos">Veuillez remplir tous les champs correctement</string>
     <string name="hint_reservation_time">Heure de réservation: </string>
 

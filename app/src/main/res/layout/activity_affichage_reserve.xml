@@ -8,36 +8,29 @@
     android:background="@color/bckgrnd"
     tools:context=".AffichageReserve">
 
-    <TextView
-        android:id="@+id/tv_nomResto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Affichage Resto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.12" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/lv_reservations"
-        android:layout_width="409dp"
-        android:layout_height="551dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:background="@color/gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_datePicker" />
+        <TextView
+            android:id="@+id/tv_nomResto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ui3_afficheResto" />
 
-    <Button
-        android:id="@+id/btn_datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Choisir une date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nomResto" />
+        <Button
+            android:id="@+id/btn_datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/ui3_choixDateResto" />
+
+        <ListView
+            android:id="@+id/lv_reservations"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

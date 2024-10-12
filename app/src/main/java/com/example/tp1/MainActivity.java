@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent pageAfficher = new Intent(MainActivity.this, AffichageReserve.class);
                 int selectedPosition = spinnerRestaurants.getSelectedItemPosition();
                 Restaurant unObjetResto = restaurantList.get(selectedPosition);
+
                if  (unObjetResto.noRestaurant ==1) {
                    Parcelable[] reservationsListe = affichageListe.getParcelableArrayExtra("listeReservations1");
                    pageAfficher.putExtra("listeReservations", reservationsListe);

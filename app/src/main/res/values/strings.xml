@@ -19,6 +19,11 @@
     <string name="ui2_placesChoisis">Places Selected: %1$d</string>
     <string name="ui2_erreurTemps">Error Calculating End Time</string>
 
+
+    <string name="ui3_afficheResto">Reservations %1$s</string>
+    <string name="ui3_choixDateResto">Select Date</string>
+
+
     <string name="hint_reservation_time">Reservation time: </string>
     <string name="ui2_erreurInfos">Please Fill All Fields</string>
 

@@ -19,6 +19,7 @@ public class AffichageReserve extends AppCompatActivity {
     TextView tv_nomResto;
     ListView lv_reservations;
     Button btn_datePicker;
+    AdapterReservation adapteur;
     ArrayList<Reservation> reservationsList;
     ArrayList<Reservation> filteredList;
 
@@ -45,7 +46,6 @@ public class AffichageReserve extends AppCompatActivity {
             }
         }
 
-
         // Configuration du datePicker
         btn_datePicker.setOnClickListener(view -> {
             final Calendar calendar = Calendar.getInstance();
@@ -63,8 +63,8 @@ public class AffichageReserve extends AppCompatActivity {
         });
 
         // L'adapteur du ListView
-        lv_reservations.setAdapter(new AdapterReservation(this, reservationsList));
-
+        adapteur = new AdapterReservation(this, reservationsList);
+        lv_reservations.setAdapter(adapteur);
 
         lv_reservations.setOnItemClickListener((parent, view, position, id) -> {
             Reservation selectedReservation = reservationsList.get(position);
