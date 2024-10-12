@@ -16,10 +16,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.005" />
 
     <TextView
         android:id="@+id/tv_nbPlacesRestantes"
@@ -36,8 +36,8 @@
     <EditText
         android:id="@+id/et_selectedDate"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
         android:background="@android:drawable/editbox_background"
         android:focusable="false"
         android:hint="@string/ui2_choixDate"
@@ -46,18 +46,18 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_nbPlacesRestantes" />
 
     <Button
         android:id="@+id/btn_openDatePicker"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="4dp"
         android:text="@string/ui2_choixDate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_selectedDate" />
 
@@ -65,7 +65,7 @@
         android:id="@+id/seekBar_nbPlaces"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="28dp"
         android:max="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -75,20 +75,20 @@
     <TextView
         android:id="@+id/tv_selectedPlaces"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="4dp"
         android:text="@string/ui2_placesChoisis"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintHorizontal_bias="0.028"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_openDatePicker" />
 
     <Button
         android:id="@+id/btn_confirmReservation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:text="@string/ui2_boutonReserve"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,33 +98,33 @@
     <Spinner
         android:id="@+id/spinner_reservation_time"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_height="30dp"
         android:entries="@array/time_options"
         android:minHeight="48dp"
         android:prompt="@string/hint_reservation_time"
         app:layout_constraintEnd_toStartOf="@+id/tv_endTime"
+        app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seekBar_nbPlaces" />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_nbPlaces" />
 
     <TextView
         android:id="@+id/tv_endTime"
         android:layout_width="102dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="35dp"
         android:focusable="false"
         android:text="@string/ui2_finReserve"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/et_nom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.757"
+        app:layout_constraintHorizontal_bias="0.675"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_nbPlaces" />
 
     <EditText
         android:id="@+id/et_nom"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
         android:hint="@string/ui2_nomPersonne"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +135,7 @@
     <EditText
         android:id="@+id/et_phone"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:hint="@string/ui2_numPersonne"
         android:inputType="phone"
