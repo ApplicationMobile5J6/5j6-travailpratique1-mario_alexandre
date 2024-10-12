@@ -76,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent pageAfficher = new Intent(MainActivity.this, AffichageReserve.class);
                 int selectedPosition = spinnerRestaurants.getSelectedItemPosition();
                 Restaurant unObjetResto = restaurantList.get(selectedPosition);
-
+                ArrayList<Reservation> reservationsListe;
                if  (unObjetResto.noRestaurant ==1) {
-                   Parcelable[] reservationsListe = affichageListe.getParcelableArrayExtra("listeReservations1");
+                    reservationsListe = affichageListe.getParcelableArrayListExtra("listeReservations1");
                    pageAfficher.putExtra("listeReservations", reservationsListe);
                } else {
-                   Parcelable[] reservationsListe = affichageListe.getParcelableArrayExtra("listeReservations2");
+                   reservationsListe = affichageListe.getParcelableArrayListExtra("listeReservations2");
                    pageAfficher.putExtra("listeReservations", reservationsListe);
                }
                 pageAfficher.putExtra("leResto",unObjetResto);

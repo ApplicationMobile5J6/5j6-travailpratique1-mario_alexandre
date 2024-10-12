@@ -32,19 +32,13 @@ public class AffichageReserve extends AppCompatActivity {
         lv_reservations = findViewById(R.id.lv_reservations);
         btn_datePicker = findViewById(R.id.btn_datePicker);
 
-        Intent affichageListe = getIntent();
+
         reservationsList = new ArrayList<>();
-        Parcelable[] reservationsArray = affichageListe.getParcelableArrayExtra("listeReservations");
-        Restaurant selectedResto = affichageListe.getParcelableExtra("leResto");
+        reservationsList = getIntent().getParcelableArrayListExtra("listeReservations");
+        Restaurant selectedResto = getIntent().getParcelableExtra("leResto");
 
         tv_nomResto.setText(selectedResto.nomRestaurant);
 
-        // Convertit le parcelable en array
-        if (reservationsArray != null) {
-            for (Parcelable parcelable : reservationsArray) {
-                reservationsList.add((Reservation) parcelable);
-            }
-        }
 
         // Configuration du datePicker
         btn_datePicker.setOnClickListener(view -> {
@@ -55,7 +49,6 @@ public class AffichageReserve extends AppCompatActivity {
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(AffichageReserve.this,
                     (view1, selectedYear, selectedMonth, selectedDay) -> {
-                        // Format the date
                         String selectedDate = String.format(Locale.getDefault(), "%02d/%02d/%d", selectedDay, selectedMonth + 1, selectedYear);
                         filterReservations(selectedDate);
                     }, year, month, day);

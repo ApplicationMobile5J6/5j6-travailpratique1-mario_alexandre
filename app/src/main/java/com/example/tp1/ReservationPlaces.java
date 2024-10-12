@@ -195,10 +195,10 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
 
             Intent pageMain= new Intent(ReservationPlaces.this, MainActivity.class);
             if (selectedRestaurant.noRestaurant == 1) {
-                pageMain.putExtra("listeReservations1", reservationsList);
+                pageMain.putParcelableArrayListExtra("listeReservations1", reservationsList);
                 startActivity(pageMain);
             } else{
-                pageMain.putExtra("listeReservations2", reservationsList);
+                pageMain.putParcelableArrayListExtra("listeReservations2", reservationsList);
                 startActivity(pageMain);
             }
         }
