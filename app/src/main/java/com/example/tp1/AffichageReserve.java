@@ -1,9 +1,7 @@
 package com.example.tp1;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
