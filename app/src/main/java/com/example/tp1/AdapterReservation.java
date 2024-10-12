@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -52,7 +51,7 @@ public class AdapterReservation extends BaseAdapter {
 
         imageView.setImageResource(R.drawable.image_reservation);
         tvNomPersonne.setText(reservation.getNomPersonne());
-        tvNbPlaces.setText("Places: " + reservation.getNbPlaces());
+        tvNbPlaces.setText("Places: " + reservation.nbPlaces);
         tvHeures.setText(reservation.getBlocReservationDebut() + " - " + reservation.getBlocReservationFin());
 
         // Return the completed view to render on screen

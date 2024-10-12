@@ -37,6 +37,7 @@ public class AffichageReserve extends AppCompatActivity {
         reservationsList = getIntent().getParcelableArrayListExtra("listeReservations");
         Restaurant selectedResto = getIntent().getParcelableExtra("leResto");
 
+        assert selectedResto != null;
         tv_nomResto.setText(selectedResto.nomRestaurant);
 
 
