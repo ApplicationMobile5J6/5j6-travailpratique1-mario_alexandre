@@ -22,7 +22,7 @@
 
     <string name="ui3_afficheResto">Reservations %1$s</string>
     <string name="ui3_choixDateResto">Select Date</string>
-
+    <string name="ui3_close">Close</string>
 
     <string name="hint_reservation_time">Reservation time: </string>
     <string name="ui2_erreurInfos">Please Fill All Fields</string>

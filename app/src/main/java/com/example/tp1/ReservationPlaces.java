@@ -30,7 +30,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 public class ReservationPlaces extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
-    Button btn_openDatePicker, btn_confirmReservation;
+    Button btn_openDatePicker, btn_confirmReservation, btn_Close;
     EditText et_nom, et_phone;
     TextView et_nomResto, tv_selectedPlaces, tv_endTime, tv_nbPlaces, tv_dateReserve;
     SeekBar seekBar_nbPlaces;
@@ -42,6 +42,7 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
     int noReservation = 1;
     String modifTexte;
     String resStart, resEnd;
+    Intent pageMain= new Intent(ReservationPlaces.this, MainActivity.class);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +66,7 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
         tv_dateReserve = findViewById(R.id.et_selectedDate);
         et_nom = findViewById(R.id.et_nom);
         et_phone = findViewById(R.id.et_phone);
+        btn_Close = findViewById(R.id.buttonClose);
 
         btn_openDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +107,7 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
             }
         });
         btn_confirmReservation.setOnClickListener(view -> makeReservation());
-
+        btn_Close.setOnClickListener((view -> openMain()));
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this,
                 R.array.time_options,
@@ -193,13 +195,13 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
 
             hideKeyboard();
 
-            Intent pageMain= new Intent(ReservationPlaces.this, MainActivity.class);
+
             if (selectedRestaurant.noRestaurant == 1) {
                 pageMain.putParcelableArrayListExtra("listeReservations1", reservationsList);
-                startActivity(pageMain);
+
             } else{
                 pageMain.putParcelableArrayListExtra("listeReservations2", reservationsList);
-                startActivity(pageMain);
+
             }
         }
     }
@@ -239,5 +241,8 @@ public class ReservationPlaces extends AppCompatActivity implements DatePickerDi
         tv_dateReserve.setText(dateChoisie);
     }
 
+    private void openMain(){
+        startActivity(pageMain);
+    }
 
 }
